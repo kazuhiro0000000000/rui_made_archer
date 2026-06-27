@@ -17,406 +17,163 @@
   }
 
   /* ===== 背景 ===== */
-  #world {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    will-change: transform;
-  }
-  .cloud {
-    position: absolute;
-    font-size: 42px;
-    opacity: 0.9;
-  }
+  #world { position: absolute; top: 0; left: 0; height: 100%; will-change: transform; }
+  .cloud { position: absolute; font-size: 42px; opacity: 0.9; }
   .building {
-    position: absolute;
-    bottom: 60px;
-    width: 70px;
+    position: absolute; bottom: 60px; width: 70px;
     background: linear-gradient(#9fb6c9, #7c93a6);
-    border-radius: 6px 6px 0 0;
-    box-shadow: inset -6px 0 rgba(0,0,0,.12);
+    border-radius: 6px 6px 0 0; box-shadow: inset -6px 0 rgba(0,0,0,.12);
   }
   .building::after {
-    content: "";
-    position: absolute;
-    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    content: ""; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
     background-image: radial-gradient(circle, #fff4b0 3px, transparent 4px);
-    background-size: 18px 22px;
-    opacity: .7;
+    background-size: 18px 22px; opacity: .7;
   }
   #ground {
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 60px;
+    position: absolute; bottom: 0; left: 0; height: 60px;
     background: repeating-linear-gradient(45deg,#7bc36b,#7bc36b 18px,#74b964 18px,#74b964 36px);
     border-top: 6px solid #5fa552;
   }
 
-  /* ===== プレイヤー ===== */
+  /* ===== プレイヤー(少年) ===== */
   #player {
-    position: absolute;
-    width: 50px;
-    height: 76px;
-    bottom: 60px;
-    left: 80px;
-    z-index: 20;
-    transition: opacity .1s;
+    position: absolute; width: 50px; height: 76px; bottom: 60px; left: 80px;
+    z-index: 20; transition: opacity .1s;
     --hair:#2b2b2b; --shirt:#3a8ee6; --shorts:#23457e;
   }
-  /* 足 */
-  #player .leg {
-    position:absolute; bottom:0; width:12px; height:18px;
-    background:#5a4632; border-radius:0 0 5px 5px;
-  }
+  #player .leg { position:absolute; bottom:0; width:12px; height:18px; background:#5a4632; border-radius:0 0 5px 5px; }
   #player .leg.l{ left:13px; } #player .leg.r{ left:25px; }
-  /* ズボン */
-  #player .shorts {
-    position:absolute; bottom:14px; left:9px;
-    width:32px; height:16px;
-    background:var(--shorts); border-radius:6px;
-  }
-  /* シャツ(胴) */
-  #player .torso {
-    position:absolute; bottom:26px; left:8px;
-    width:34px; height:26px;
-    background:var(--shirt); border-radius:10px 10px 6px 6px;
-    box-shadow: inset -4px -3px rgba(0,0,0,.15);
-  }
-  /* 腕 */
-  #player .parm {
-    position:absolute; bottom:30px; right:2px;
-    width:10px; height:22px;
-    background:#ffd9b8; border-radius:6px;
-    transform:rotate(-18deg);
-  }
-  /* 顔 */
-  #player .face {
-    position:absolute; bottom:46px; left:11px;
-    width:30px; height:30px;
-    background:#ffd9b8; border-radius:50%;
-  }
-  /* 髪 */
-  #player .hair {
-    position:absolute; bottom:64px; left:8px;
-    width:36px; height:18px;
-    background:var(--hair);
-    border-radius:18px 18px 0 0;
-  }
+  #player .shorts { position:absolute; bottom:14px; left:9px; width:32px; height:16px; background:var(--shorts); border-radius:6px; }
+  #player .torso { position:absolute; bottom:26px; left:8px; width:34px; height:26px; background:var(--shirt); border-radius:10px 10px 6px 6px; box-shadow: inset -4px -3px rgba(0,0,0,.15); }
+  #player .parm { position:absolute; bottom:30px; right:2px; width:10px; height:22px; background:#ffd9b8; border-radius:6px; transform:rotate(-18deg); }
+  #player .face { position:absolute; bottom:46px; left:11px; width:30px; height:30px; background:#ffd9b8; border-radius:50%; }
+  #player .hair { position:absolute; bottom:64px; left:8px; width:36px; height:18px; background:var(--hair); border-radius:18px 18px 0 0; }
   #player .hair::after {
-    content:""; position:absolute; bottom:-6px; left:0;
-    width:36px; height:12px;
-    background:var(--hair);
-    border-radius:0 0 6px 12px;
+    content:""; position:absolute; bottom:-6px; left:0; width:36px; height:12px;
+    background:var(--hair); border-radius:0 0 6px 12px;
     clip-path: polygon(0 0,100% 0,100% 40%,70% 80%,40% 30%,0 60%);
   }
   #player .eye { position:absolute; bottom:12px; width:5px; height:7px; background:#2a2a2a; border-radius:50%; }
   #player .eye.l{ left:8px; } #player .eye.r{ left:18px; }
-  #player .smile {
-    position:absolute; bottom:6px; left:10px;
-    width:11px; height:6px;
-    border:2px solid #b5603a; border-top:none;
-    border-radius:0 0 8px 8px;
-  }
+  #player .smile { position:absolute; bottom:6px; left:10px; width:11px; height:6px; border:2px solid #b5603a; border-top:none; border-radius:0 0 8px 8px; }
   #player .cheek { position:absolute; bottom:8px; width:5px; height:4px; background:#ff9a9a; border-radius:50%; opacity:.7; }
   #player .cheek.l{ left:3px; } #player .cheek.r{ left:23px; }
-  #player .bow {
-    position:absolute; right:-10px; bottom:24px;
-    font-size:22px;
-  }
+  #player .bow { position:absolute; right:-10px; bottom:24px; font-size:22px; }
   #player.invincible { animation: blink .18s steps(2) infinite; }
   @keyframes blink { 0%{opacity:1;} 50%{opacity:.25;} 100%{opacity:1;} }
 
   /* ===== 矢 ===== */
-  .arrow {
-    position:absolute;
-    width:34px; height:8px;
-    z-index:19;
-  }
-  .arrow::before {
-    content:"➤";
-    position:absolute; left:0; top:-12px;
-    font-size:26px; color:#5a3b1a;
-    text-shadow:0 1px 0 #fff;
-  }
+  .arrow { position:absolute; width:34px; height:8px; z-index:19; }
+  .arrow::before { content:"➤"; position:absolute; left:0; top:-12px; font-size:26px; color:#5a3b1a; text-shadow:0 1px 0 #fff; }
 
   /* ===== ボス ===== */
-  #boss {
-    position:absolute;
-    bottom:60px;
-    right:-360px;
-    width:300px;
-    height:360px;
-    z-index:15;
-    display:none;
-    transition: right 1.4s ease-out;
-  }
+  #boss { position:absolute; bottom:60px; right:-360px; width:300px; height:360px; z-index:15; display:none; transition: right 1.4s ease-out; }
   #boss.hit { animation: bossHit .3s steps(2) 2; }
   @keyframes bossHit { 0%{filter:brightness(1);} 50%{filter:brightness(2.4) saturate(2);} 100%{filter:brightness(1);} }
-  #boss .leg {
-    position:absolute; bottom:0; width:54px; height:90px;
-    background:#4a7c43; border-radius:20px 20px 8px 8px;
-    box-shadow: inset -6px 0 rgba(0,0,0,.18);
-  }
+  #boss .leg { position:absolute; bottom:0; width:54px; height:90px; background:#4a7c43; border-radius:20px 20px 8px 8px; box-shadow: inset -6px 0 rgba(0,0,0,.18); }
   #boss .leg.l{ left:70px; } #boss .leg.r{ left:150px; }
-  #boss .foot {
-    position:absolute; bottom:0; width:64px; height:22px;
-    background:#3c6637; border-radius:12px;
-  }
+  #boss .foot { position:absolute; bottom:0; width:64px; height:22px; background:#3c6637; border-radius:12px; }
   #boss .foot.l{ left:62px; } #boss .foot.r{ left:142px; }
   #boss .tail {
-    position:absolute; bottom:30px; right:-40px;
-    width:120px; height:46px;
-    background:#4a7c43;
-    border-radius:0 40px 40px 0;
-    transform-origin: left center;
-    animation: tailWag 1.6s ease-in-out infinite alternate;
-    z-index:-1;
+    position:absolute; bottom:30px; right:-40px; width:120px; height:46px;
+    background:#4a7c43; border-radius:0 40px 40px 0; transform-origin: left center;
+    animation: tailWag 1.6s ease-in-out infinite alternate; z-index:-1;
   }
   @keyframes tailWag { from{transform:rotate(-8deg);} to{transform:rotate(10deg);} }
-  #boss .torso {
-    position:absolute; bottom:70px; left:55px;
-    width:160px; height:180px;
-    background: radial-gradient(circle at 40% 35%, #6fae63, #4a7c43 70%);
-    border-radius: 70px 70px 50px 50px;
-    box-shadow: inset -10px -8px rgba(0,0,0,.18);
-  }
-  #boss .belly {
-    position:absolute; bottom:78px; left:92px;
-    width:86px; height:120px;
-    background:#cfe8a8; border-radius:50%;
-  }
-  /* 背中のトゲ */
-  #boss .spike {
-    position:absolute;
-    width:0; height:0;
-    border-left:14px solid transparent;
-    border-right:14px solid transparent;
-    border-bottom:30px solid #6a4a9c;
-    z-index:-1;
-  }
-  #boss .arm {
-    position:absolute; bottom:150px; left:40px;
-    width:34px; height:70px;
-    background:#4a7c43; border-radius:18px;
-    transform:rotate(18deg);
-  }
-  #boss .head {
-    position:absolute; top:0; left:70px;
-    width:130px; height:120px;
-    background: radial-gradient(circle at 45% 40%, #6fae63, #4a7c43 75%);
-    border-radius: 60px 60px 50px 50px;
-    box-shadow: inset -8px -6px rgba(0,0,0,.18);
-  }
-  #boss .eye {
-    position:absolute; top:34px;
-    width:30px; height:34px;
-    background:#fff; border-radius:50%;
-    border:3px solid #2c3a2a;
-  }
+  #boss .torso { position:absolute; bottom:70px; left:55px; width:160px; height:180px; background: radial-gradient(circle at 40% 35%, #6fae63, #4a7c43 70%); border-radius: 70px 70px 50px 50px; box-shadow: inset -10px -8px rgba(0,0,0,.18); }
+  #boss .belly { position:absolute; bottom:78px; left:92px; width:86px; height:120px; background:#cfe8a8; border-radius:50%; }
+  #boss .spike { position:absolute; width:0; height:0; border-left:14px solid transparent; border-right:14px solid transparent; border-bottom:30px solid #6a4a9c; z-index:-1; }
+  #boss .arm { position:absolute; bottom:150px; left:40px; width:34px; height:70px; background:#4a7c43; border-radius:18px; transform:rotate(18deg); }
+  #boss .head { position:absolute; top:0; left:70px; width:130px; height:120px; background: radial-gradient(circle at 45% 40%, #6fae63, #4a7c43 75%); border-radius: 60px 60px 50px 50px; box-shadow: inset -8px -6px rgba(0,0,0,.18); }
+  #boss .eye { position:absolute; top:34px; width:30px; height:34px; background:#fff; border-radius:50%; border:3px solid #2c3a2a; }
   #boss .eye.l{ left:18px; } #boss .eye.r{ left:74px; }
-  #boss .pupil {
-    position:absolute; top:10px; left:8px;
-    width:14px; height:16px; background:#222; border-radius:50%;
-  }
-  #boss .mouth {
-    position:absolute; top:80px; left:30px;
-    width:74px; height:26px;
-    background:#7a3b3b; border-radius:0 0 30px 30px;
-    border-top:4px solid #3c2222;
-    overflow:hidden;
-  }
-  #boss .tooth {
-    position:absolute; top:0; width:0; height:0;
-    border-left:7px solid transparent; border-right:7px solid transparent;
-    border-top:12px solid #fff;
-  }
+  #boss .pupil { position:absolute; top:10px; left:8px; width:14px; height:16px; background:#222; border-radius:50%; }
+  #boss .mouth { position:absolute; top:80px; left:30px; width:74px; height:26px; background:#7a3b3b; border-radius:0 0 30px 30px; border-top:4px solid #3c2222; overflow:hidden; }
+  #boss .tooth { position:absolute; top:0; width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:12px solid #fff; }
   #boss .nostril { position:absolute; top:64px; width:7px; height:5px; background:#2c3a2a; border-radius:50%; }
 
-  /* ===== 障害物 ===== */
-  .obstacle {
-    position:absolute;
-    bottom:60px;
-    width:46px; height:48px;
-    font-size:42px; line-height:48px; text-align:center;
-    z-index:14;
-  }
-  /* ===== 的 ===== */
-  .target {
-    position:absolute;
-    width:48px; height:48px;
-    font-size:42px; line-height:48px; text-align:center;
-    z-index:14;
-    animation: floaty 1.6s ease-in-out infinite alternate;
-  }
+  /* ===== 障害物 / 的 ===== */
+  .obstacle { position:absolute; bottom:60px; width:46px; height:48px; font-size:42px; line-height:48px; text-align:center; z-index:14; }
+  .target { position:absolute; width:48px; height:48px; font-size:42px; line-height:48px; text-align:center; z-index:14; animation: floaty 1.6s ease-in-out infinite alternate; }
   @keyframes floaty { from{transform:translateY(-6px);} to{transform:translateY(6px);} }
   .target.pop { animation: targetPop .4s ease-out forwards; }
   @keyframes targetPop { 0%{transform:scale(1);} 100%{transform:scale(1.8);opacity:0;} }
 
-  /* ===== 火の玉 ===== */
-  .fireball {
-    position:absolute;
-    width:42px; height:42px;
-    border-radius:50%;
-    background: radial-gradient(circle at 50% 40%, #fff6a0, #ff9a2e 50%, #ff4d2e 90%);
-    box-shadow:0 0 18px #ff7a2e;
-    z-index:18;
-  }
-  .fireball::after {
-    content:""; position:absolute; right:-18px; top:10px;
-    width:28px; height:22px;
-    background: linear-gradient(90deg, transparent, #ff7a2e);
-    border-radius:50%;
-    opacity:.7;
-  }
-
-  /* ===== 衝撃波(地面) ===== */
-  .shock {
-    position:absolute;
-    bottom:60px;
-    width:46px; height:40px;
-    z-index:17;
-    font-size:38px; line-height:40px; text-align:center;
-    animation: shockPulse .4s ease-in-out infinite alternate;
-  }
+  /* ===== 衝撃波 ===== */
+  .shock { position:absolute; bottom:60px; width:46px; height:40px; z-index:17; font-size:38px; line-height:40px; text-align:center; animation: shockPulse .4s ease-in-out infinite alternate; }
   @keyframes shockPulse { from{transform:scaleY(.8);} to{transform:scaleY(1.15);} }
 
-  /* ===== キラキラ ===== */
-  .spark {
-    position:absolute; z-index:30;
-    font-size:26px; pointer-events:none;
-    animation: sparkUp .7s ease-out forwards;
-  }
-  @keyframes sparkUp {
-    0%{ transform:translateY(0) scale(.5); opacity:1; }
-    100%{ transform:translateY(-60px) scale(1.4); opacity:0; }
-  }
-  .hittext {
-    position:absolute; z-index:31;
-    font-weight:900; font-size:34px; color:#ffea00;
-    -webkit-text-stroke:3px #e8530e; text-stroke:3px #e8530e;
-    pointer-events:none;
-    animation: hitPop .8s ease-out forwards;
-  }
-  @keyframes hitPop {
-    0%{ transform:scale(.4) rotate(-8deg); opacity:0; }
-    25%{ transform:scale(1.3) rotate(6deg); opacity:1; }
-    100%{ transform:scale(1) translateY(-50px); opacity:0; }
-  }
+  /* ===== 火の玉 ===== */
+  .fireball { position:absolute; width:42px; height:42px; border-radius:50%; background: radial-gradient(circle at 50% 40%, #fff6a0, #ff9a2e 50%, #ff4d2e 90%); box-shadow:0 0 18px #ff7a2e; z-index:18; }
+  .fireball::after { content:""; position:absolute; right:-18px; top:10px; width:28px; height:22px; background: linear-gradient(90deg, transparent, #ff7a2e); border-radius:50%; opacity:.7; }
+
+  /* ===== 演出 ===== */
+  .spark { position:absolute; z-index:30; font-size:26px; pointer-events:none; animation: sparkUp .7s ease-out forwards; }
+  @keyframes sparkUp { 0%{ transform:translateY(0) scale(.5); opacity:1; } 100%{ transform:translateY(-60px) scale(1.4); opacity:0; } }
+  .hittext { position:absolute; z-index:31; font-weight:900; font-size:34px; color:#ffea00; -webkit-text-stroke:3px #e8530e; pointer-events:none; animation: hitPop .8s ease-out forwards; }
+  @keyframes hitPop { 0%{ transform:scale(.4) rotate(-8deg); opacity:0; } 25%{ transform:scale(1.3) rotate(6deg); opacity:1; } 100%{ transform:scale(1) translateY(-50px); opacity:0; } }
 
   /* ===== HUD ===== */
-  #hud {
-    position:absolute; top:0; left:0; right:0;
-    padding:10px 16px;
-    display:flex; justify-content:space-between; align-items:flex-start;
-    z-index:50; pointer-events:none;
-  }
-  .panel {
-    background:rgba(255,255,255,.82);
-    border:3px solid #ff9a2e;
-    border-radius:16px;
-    padding:6px 14px;
-    font-weight:900; font-size:20px; color:#333;
-    box-shadow:0 3px 0 rgba(0,0,0,.15);
-  }
-  #bossHpPanel { display:none; color:#c0392b; font-size:18px; }
+  #hud { position:absolute; top:0; left:0; right:0; padding:8px 14px; display:flex; justify-content:space-between; align-items:flex-start; z-index:50; pointer-events:none; }
+  .panel { background:rgba(255,255,255,.82); border:3px solid #ff9a2e; border-radius:14px; padding:5px 12px; font-weight:900; font-size:clamp(13px,3.4vh,20px); color:#333; box-shadow:0 3px 0 rgba(0,0,0,.15); }
+  #bossHpPanel { display:none; color:#c0392b; font-size:clamp(12px,3vh,18px); }
   #bossHpPanel .stars { letter-spacing:1px; }
-  #muteBtn {
-    position:absolute; top:10px; left:50%; transform:translateX(-50%);
-    z-index:55; pointer-events:auto;
-    width:44px; height:44px; border-radius:50%;
-    background:rgba(255,255,255,.82); border:3px solid #ff9a2e;
-    display:flex; align-items:center; justify-content:center;
-    font-size:22px; cursor:pointer;
-    box-shadow:0 3px 0 rgba(0,0,0,.15);
-  }
+  #muteBtn { position:absolute; top:8px; left:50%; transform:translateX(-50%); z-index:55; pointer-events:auto; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.82); border:3px solid #ff9a2e; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; box-shadow:0 3px 0 rgba(0,0,0,.15); }
   #muteBtn:active { transform:translateX(-50%) scale(.92); }
 
   /* ===== 操作ボタン ===== */
-  #controls {
-    position:absolute; bottom:0; left:0; right:0;
-    height:120px; z-index:60;
-    pointer-events:none;
-  }
-  .btn {
-    position:absolute; bottom:18px;
-    width:84px; height:84px;
-    border-radius:50%;
-    background:rgba(255,255,255,.55);
-    border:4px solid rgba(255,255,255,.9);
-    display:flex; align-items:center; justify-content:center;
-    font-size:38px; font-weight:900; color:#444;
-    pointer-events:auto;
-    box-shadow:0 4px 10px rgba(0,0,0,.2);
-  }
+  #controls { position:absolute; bottom:0; left:0; right:0; height:120px; z-index:60; pointer-events:none; }
+  .btn { position:absolute; bottom:14px; border-radius:50%; background:rgba(255,255,255,.55); border:4px solid rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:900; color:#444; pointer-events:auto; box-shadow:0 4px 10px rgba(0,0,0,.2); }
   .btn:active { transform:scale(.92); background:rgba(255,235,150,.8); }
-  #btnJump  { left:24px;  width:104px; height:104px; bottom:12px; background:rgba(140,220,255,.75); font-size:30px; }
-  #btnShoot { right:24px;  width:104px; height:104px; bottom:12px; background:rgba(255,170,120,.85); font-size:28px; }
+  #btnJump  { left:24px;  width:96px; height:96px; background:rgba(140,220,255,.75); }
+  #btnShoot { right:24px; width:96px; height:96px; background:rgba(255,170,120,.85); }
 
   /* ===== オーバーレイ ===== */
   .overlay {
     position:absolute; inset:0; z-index:100;
-    display:none; flex-direction:column;
-    align-items:center; justify-content:center;
-    text-align:center; color:#fff;
-    background:rgba(0,0,0,.62);
-    padding:20px;
+    display:none; flex-direction:column; align-items:center;
+    justify-content:safe center;
+    text-align:center; color:#fff; background:rgba(0,0,0,.66);
+    padding:12px; overflow-y:auto;
   }
   .overlay.show { display:flex; }
-  .overlay h1 { font-size:42px; margin-bottom:8px; text-shadow:0 3px 0 rgba(0,0,0,.4); }
-  .overlay h2 { font-size:26px; margin-bottom:16px; color:#ffe27a; }
-  .overlay p  { font-size:22px; margin:4px 0; }
+  .overlay h1 { font-size:clamp(20px,6.5vh,40px); margin-bottom:4px; text-shadow:0 3px 0 rgba(0,0,0,.4); line-height:1.1; }
+  .overlay h2 { font-size:clamp(14px,4vh,24px); margin-bottom:8px; color:#ffe27a; }
+  .overlay p  { font-size:clamp(12px,3.2vh,20px); margin:3px 0; }
+
   /* キャラ選択 */
-  #charGrid {
-    display:flex; gap:14px; margin:14px 0 6px;
-    flex-wrap:wrap; justify-content:center;
-  }
+  #charGrid { display:flex; gap:clamp(6px,1.5vw,14px); margin:clamp(6px,1.5vh,14px) 0 4px; flex-wrap:nowrap; justify-content:center; }
   .charCard {
-    width:110px;
-    background:rgba(255,255,255,.14);
-    border:4px solid rgba(255,255,255,.5);
-    border-radius:18px;
-    padding:12px 8px 10px;
-    cursor:pointer;
-    transition:transform .12s, border-color .12s, background .12s;
+    width:clamp(74px,12vw,108px);
+    background:rgba(255,255,255,.14); border:4px solid rgba(255,255,255,.5);
+    border-radius:16px; padding:clamp(6px,1.2vh,12px) 6px clamp(6px,1vh,10px);
+    cursor:pointer; transition:transform .12s, border-color .12s, background .12s;
   }
   .charCard:active { transform:scale(.95); }
   .charCard.sel { border-color:#ffe27a; background:rgba(255,226,122,.28); transform:translateY(-4px); }
-  .charCard .name { font-size:20px; font-weight:900; margin-top:6px; color:#fff; }
-  .avatar {
-    position:relative; width:60px; height:74px; margin:0 auto;
-  }
-  .avatar .a-leg { position:absolute; bottom:0; width:14px; height:20px; background:#5a4632; border-radius:0 0 5px 5px; }
-  .avatar .a-leg.l{ left:16px;} .avatar .a-leg.r{ left:30px;}
-  .avatar .a-shorts { position:absolute; bottom:16px; left:13px; width:34px; height:16px; border-radius:6px; }
-  .avatar .a-torso { position:absolute; bottom:28px; left:12px; width:36px; height:26px; border-radius:10px; }
-  .avatar .a-face { position:absolute; bottom:46px; left:15px; width:30px; height:30px; background:#ffd9b8; border-radius:50%; }
-  .avatar .a-face::before, .avatar .a-face::after { content:""; position:absolute; bottom:12px; width:5px; height:7px; background:#2a2a2a; border-radius:50%; }
-  .avatar .a-face::before{ left:8px;} .avatar .a-face::after{ left:18px;}
-  .avatar .a-hair { position:absolute; bottom:64px; left:12px; width:36px; height:18px; border-radius:18px 18px 4px 4px; }
+  .charCard .name { font-size:clamp(14px,3.6vh,20px); font-weight:900; margin-top:4px; color:#fff; }
+  .avatar { position:relative; width:54px; height:66px; margin:0 auto; }
+  @media (max-height: 470px){ .avatar { transform:scale(.78); transform-origin:top center; height:52px; } }
+  .avatar .a-leg { position:absolute; bottom:0; width:13px; height:18px; background:#5a4632; border-radius:0 0 5px 5px; }
+  .avatar .a-leg.l{ left:14px;} .avatar .a-leg.r{ left:27px;}
+  .avatar .a-shorts { position:absolute; bottom:14px; left:11px; width:32px; height:15px; border-radius:6px; }
+  .avatar .a-torso { position:absolute; bottom:25px; left:10px; width:34px; height:24px; border-radius:9px; }
+  .avatar .a-face { position:absolute; bottom:42px; left:13px; width:28px; height:28px; background:#ffd9b8; border-radius:50%; }
+  .avatar .a-face::before, .avatar .a-face::after { content:""; position:absolute; bottom:11px; width:5px; height:7px; background:#2a2a2a; border-radius:50%; }
+  .avatar .a-face::before{ left:7px;} .avatar .a-face::after{ left:16px;}
+  .avatar .a-hair { position:absolute; bottom:58px; left:10px; width:34px; height:16px; border-radius:17px 17px 4px 4px; }
 
   .bigbtn {
-    margin-top:22px;
-    padding:16px 34px;
-    font-size:26px; font-weight:900;
-    color:#fff; background:#ff7a2e;
-    border:none; border-radius:40px;
-    box-shadow:0 6px 0 #c85412;
-    cursor:pointer;
+    margin-top:clamp(8px,2vh,20px); padding:clamp(9px,2vh,16px) 34px;
+    font-size:clamp(18px,4.2vh,26px); font-weight:900; color:#fff; background:#ff7a2e;
+    border:none; border-radius:40px; box-shadow:0 6px 0 #c85412; cursor:pointer;
   }
   .bigbtn:active { transform:translateY(4px); box-shadow:0 2px 0 #c85412; }
 
-  #rotate {
-    position:absolute; inset:0; z-index:200;
-    display:none; flex-direction:column; gap:14px;
-    align-items:center; justify-content:center;
-    background:#111; color:#fff; text-align:center; padding:24px;
-    font-size:24px; font-weight:900;
-  }
+  #rotate { position:absolute; inset:0; z-index:200; display:none; flex-direction:column; gap:14px; align-items:center; justify-content:center; background:#111; color:#fff; text-align:center; padding:24px; font-size:24px; font-weight:900; }
   #rotate .icon { font-size:64px; animation: spinHint 2s ease-in-out infinite; }
   @keyframes spinHint { 0%,100%{transform:rotate(0);} 50%{transform:rotate(90deg);} }
-  @media (orientation: portrait) and (max-width: 920px) {
-    #rotate { display:flex; }
-  }
+  @media (orientation: portrait) and (max-width: 920px) { #rotate { display:flex; } }
 </style>
 </head>
 <body>
@@ -424,7 +181,6 @@
   <div id="world"></div>
   <div id="ground"></div>
 
-  <!-- プレイヤー -->
   <div id="player">
     <div class="leg l"></div><div class="leg r"></div>
     <div class="shorts"></div>
@@ -439,7 +195,6 @@
     <div class="bow">🏹</div>
   </div>
 
-  <!-- ボス -->
   <div id="boss">
     <div class="tail"></div>
     <div class="leg l"></div><div class="leg r"></div>
@@ -456,21 +211,18 @@
     </div>
   </div>
 
-  <!-- HUD -->
   <div id="hud">
     <div class="panel" id="lifePanel">ライフ ❤️❤️❤️</div>
     <div class="panel" id="scorePanel">⭐とくてん 0</div>
-    <div class="panel" id="bossHpPanel">ボス：<span class="stars">★★★★★</span></div>
+    <div class="panel" id="bossHpPanel">ボス：<span class="stars">★★★★★★★★</span></div>
   </div>
   <div id="muteBtn">🔊</div>
 
-  <!-- 操作 -->
   <div id="controls">
-    <div class="btn" id="btnJump">⤴ジャンプ</div>
-    <div class="btn" id="btnShoot">🏹うつ</div>
+    <div class="btn" id="btnJump">⤴</div>
+    <div class="btn" id="btnShoot">🏹</div>
   </div>
 
-  <!-- スタート -->
   <div class="overlay show" id="startScreen">
     <h1>🦖 きょうりゅうボスと たたかえ！</h1>
     <h2>すきなキャラをえらんでね</h2>
@@ -479,7 +231,6 @@
     <button class="bigbtn" id="startBtn">あそぶ ▶</button>
   </div>
 
-  <!-- クリア -->
   <div class="overlay" id="clearScreen">
     <h1>🎉 ボスをたおした！</h1>
     <h2>ゴール！すごい！</h2>
@@ -488,7 +239,6 @@
     <button class="bigbtn" id="clearReplay">もう一回あそぶ 🔁</button>
   </div>
 
-  <!-- ゲームオーバー -->
   <div class="overlay" id="overScreen">
     <h1>😵 ゲームオーバー</h1>
     <h2>もういちど ちょうせん！</h2>
@@ -496,7 +246,6 @@
     <button class="bigbtn" id="overReplay">もう一回あそぶ 🔁</button>
   </div>
 
-  <!-- 縦持ち注意 -->
   <div id="rotate">
     <div class="icon">📱</div>
     <div>スマホを よこむきに してね！</div>
@@ -506,45 +255,40 @@
 <script>
 (function(){
   "use strict";
-
   const W = () => window.innerWidth;
   const H = () => window.innerHeight;
 
-  const world   = document.getElementById('world');
-  const ground  = document.getElementById('ground');
-  const player  = document.getElementById('player');
-  const boss    = document.getElementById('boss');
-  const lifePanel = document.getElementById('lifePanel');
-  const scorePanel= document.getElementById('scorePanel');
-  const bossHpPanel = document.getElementById('bossHpPanel');
-  const bossStars = bossHpPanel.querySelector('.stars');
-  const gameEl = document.getElementById('game');
+  const world=document.getElementById('world');
+  const ground=document.getElementById('ground');
+  const player=document.getElementById('player');
+  const boss=document.getElementById('boss');
+  const lifePanel=document.getElementById('lifePanel');
+  const scorePanel=document.getElementById('scorePanel');
+  const bossHpPanel=document.getElementById('bossHpPanel');
+  const bossStars=bossHpPanel.querySelector('.stars');
+  const gameEl=document.getElementById('game');
 
   // ===== キャラクター =====
-  const CHARACTERS = [
+  const CHARACTERS=[
     { key:'hikaru', name:'ひかる', hair:'#2b2b2b', shirt:'#3a8ee6', shorts:'#23457e' },
     { key:'mon',    name:'もん',   hair:'#6b4a2a', shirt:'#43b04a', shorts:'#2c6b30' },
     { key:'rin',    name:'りん',   hair:'#111111', shirt:'#e6483a', shorts:'#9e2a20' },
     { key:'rui',    name:'るい',   hair:'#d8b24a', shirt:'#9b59b6', shorts:'#6d3f86' },
   ];
-  let selectedChar = CHARACTERS[0];
-
+  let selectedChar=CHARACTERS[0];
   function buildCharGrid(){
     const grid=document.getElementById('charGrid');
     grid.innerHTML='';
     CHARACTERS.forEach(c=>{
       const card=document.createElement('div');
       card.className='charCard'+(c.key===selectedChar.key?' sel':'');
-      card.dataset.key=c.key;
-      card.innerHTML=`
-        <div class="avatar">
+      card.innerHTML=`<div class="avatar">
           <div class="a-leg l"></div><div class="a-leg r"></div>
           <div class="a-shorts" style="background:${c.shorts}"></div>
           <div class="a-torso" style="background:${c.shirt}"></div>
           <div class="a-face"></div>
           <div class="a-hair" style="background:${c.hair}"></div>
-        </div>
-        <div class="name">${c.name}</div>`;
+        </div><div class="name">${c.name}</div>`;
       card.addEventListener('click',()=>{
         selectedChar=c;
         grid.querySelectorAll('.charCard').forEach(el=>el.classList.remove('sel'));
@@ -559,24 +303,13 @@
     player.style.setProperty('--shorts', selectedChar.shorts);
   }
 
-  // ステージ設定
-  const STAGE_LEN = 7000;          // ワールド全長(px)
-  const BOSS_MAX_HP = 8;           // ボスのHP
-  const BOSS_TRIGGER = STAGE_LEN - W() ; // ここまでスクロールしたらボス戦
-  const GROUND_Y = 60;             // 地面の高さ
-  const PLAYER_W = 54;
-
-  // ===== サウンド (Web Audio で生成) =====
+  // ===== サウンド =====
   let actx=null, masterGain=null, muted=false;
   let bgmTimer=null, bgmStep=0, curBgm=null;
-
   function initAudio(){
     if(!actx){
-      try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }
-      catch(e){ return; }
-      masterGain=actx.createGain();
-      masterGain.gain.value = muted?0:0.9;
-      masterGain.connect(actx.destination);
+      try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
+      masterGain=actx.createGain(); masterGain.gain.value=muted?0:0.9; masterGain.connect(actx.destination);
     }
     if(actx.state==='suspended') actx.resume();
   }
@@ -585,39 +318,29 @@
     const t=actx.currentTime+(when||0);
     const o=actx.createOscillator(), g=actx.createGain();
     o.type=type||'square'; o.frequency.setValueAtTime(freq,t);
-    g.gain.setValueAtTime(0.0001,t);
-    g.gain.linearRampToValueAtTime(vol||0.2,t+0.012);
+    g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(vol||0.2,t+0.012);
     g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
-    o.connect(g).connect(masterGain);
-    o.start(t); o.stop(t+dur+0.02);
+    o.connect(g).connect(masterGain); o.start(t); o.stop(t+dur+0.02);
   }
   function slide(f1,f2,dur,type,vol){
     if(!actx||muted) return;
     const t=actx.currentTime;
     const o=actx.createOscillator(), g=actx.createGain();
-    o.type=type||'sawtooth';
-    o.frequency.setValueAtTime(f1,t);
-    o.frequency.exponentialRampToValueAtTime(f2,t+dur);
-    g.gain.setValueAtTime(0.0001,t);
-    g.gain.linearRampToValueAtTime(vol||0.2,t+0.012);
+    o.type=type||'sawtooth'; o.frequency.setValueAtTime(f1,t); o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+    g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(vol||0.2,t+0.012);
     g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
-    o.connect(g).connect(masterGain);
-    o.start(t); o.stop(t+dur+0.02);
+    o.connect(g).connect(masterGain); o.start(t); o.stop(t+dur+0.02);
   }
   function noise(dur,vol){
     if(!actx||muted) return;
-    const t=actx.currentTime;
-    const n=Math.floor(actx.sampleRate*dur);
-    const buf=actx.createBuffer(1,n,actx.sampleRate);
-    const d=buf.getChannelData(0);
+    const t=actx.currentTime, n=Math.floor(actx.sampleRate*dur);
+    const buf=actx.createBuffer(1,n,actx.sampleRate), d=buf.getChannelData(0);
     for(let i=0;i<n;i++) d[i]=(Math.random()*2-1)*(1-i/n);
     const src=actx.createBufferSource(); src.buffer=buf;
     const g=actx.createGain(); g.gain.value=vol||0.2;
     src.connect(g).connect(masterGain); src.start(t);
   }
-
-  // 効果音
-  const sfx = {
+  const sfx={
     jump(){ slide(420,760,0.16,'square',0.18); },
     shoot(){ slide(900,500,0.10,'square',0.14); noise(0.05,0.06); },
     target(){ tone(784,0.09,'square',0.18); tone(1175,0.12,'square',0.18,0.08); },
@@ -625,27 +348,20 @@
     attack(){ slide(300,140,0.25,'sawtooth',0.16); },
     hurt(){ slide(380,90,0.35,'sawtooth',0.22); },
     win(){ [523,659,784,1047,1319].forEach((f,i)=>tone(f,0.28,'square',0.2,i*0.13)); },
-    over(){ [392,330,262,196].forEach((f,i)=>tone(f,0.32,'triangle',0.2,i*0.16)); },
-    coin(){ tone(988,0.08,'square',0.16); tone(1319,0.12,'square',0.16,0.07); }
+    over(){ [392,330,262,196].forEach((f,i)=>tone(f,0.32,'triangle',0.2,i*0.16)); }
   };
-
-  // BGM パターン (0=休符)
   const N={C4:262,D4:294,E4:330,F4:349,G4:392,A4:440,B4:494,C5:523,D5:587,E5:659,F5:698,G5:784,A5:880,
            C3:131,E3:165,G3:196,A3:220,A2:110,E2:82,F3:175,D3:147};
-  const BGM_RUN = {
-    tempo:200,
+  const BGM_RUN={ tempo:200,
     mel:[N.G4,N.C5,N.E5,N.C5, N.G4,N.C5,N.E5,N.G5, N.F5,N.E5,N.D5,N.E5, N.C5,N.D5,N.E5,0,
          N.A4,N.D5,N.F5,N.D5, N.A4,N.D5,N.F5,N.A5, N.G5,N.F5,N.E5,N.D5, N.C5,0,N.G4,0],
     bass:[N.C3,0,N.G3,0, N.C3,0,N.G3,0, N.F3,0,N.C3,0, N.G3,0,N.G3,0,
-          N.D3,0,N.A3,0, N.D3,0,N.A3,0, N.G3,0,N.G3,0, N.C3,0,N.C3,0]
-  };
-  const BGM_BOSS = {
-    tempo:150,
+          N.D3,0,N.A3,0, N.D3,0,N.A3,0, N.G3,0,N.G3,0, N.C3,0,N.C3,0] };
+  const BGM_BOSS={ tempo:150,
     mel:[N.A4,0,N.A4,N.C5, N.A4,0,N.E5,0, N.F5,0,N.E5,0, N.A4,0,N.A4,0,
          N.A4,0,N.A4,N.C5, N.A4,0,N.G5,0, N.F5,N.E5,N.D5,N.C5, N.B4,0,N.E5,0],
     bass:[N.A2,N.A2,N.A2,0, N.A2,N.A2,N.E3,0, N.F3,N.F3,N.F3,0, N.E3,N.E3,N.E3,0,
-          N.A2,N.A2,N.A2,0, N.A2,N.A2,N.E3,0, N.F3,N.F3,N.G3,0, N.E2,N.E2,N.E2,0]
-  };
+          N.A2,N.A2,N.A2,0, N.A2,N.A2,N.E3,0, N.F3,N.F3,N.G3,0, N.E2,N.E2,N.E2,0] };
   function startBgm(which){
     stopBgm(); curBgm=which; bgmStep=0;
     if(!actx) return;
@@ -661,484 +377,310 @@
   function stopBgm(){ if(bgmTimer){ clearInterval(bgmTimer); bgmTimer=null; } curBgm=null; }
   function toggleMute(){
     muted=!muted;
-    if(masterGain) masterGain.gain.value = muted?0:0.9;
-    const b=document.getElementById('muteBtn');
-    if(b) b.textContent = muted?'🔇':'🔊';
+    if(masterGain) masterGain.gain.value=muted?0:0.9;
+    const b=document.getElementById('muteBtn'); if(b) b.textContent=muted?'🔇':'🔊';
   }
 
-  // 状態
-  let state = {};
+  // ステージ設定
+  const STAGE_LEN=7000;
+  const BOSS_MAX_HP=8;
+  const BOSS_TRIGGER=()=>STAGE_LEN - W();
+  const GROUND_Y=60;
+  const PLAYER_W=54;
 
+  let state={};
   function resetState(){
-    state = {
-      running:false,
-      camX:0,                 // カメラ(スクロール量)
-      playerX:80,             // ワールド座標
-      vy:0,
-      jumping:false,
-      onGround:true,
-      facing:1,
-      life:3,
-      hits:0,
-      score:0,                // とくてん(的)
-      obstacles:[],
-      targets:[],
-      bossPhase:false,        // ボス戦中
-      bossHp:BOSS_MAX_HP,
-      invincible:false,
-      arrows:[],
-      fireballs:[],
-      shocks:[],
-      attackTurn:0,
-      lastShot:0,
-      lastFire:0,
-      won:false,
-      over:false,
-      keys:{left:false,right:false}
+    state={
+      running:false, camX:0, playerX:80, playerY:0, vy:0, jumping:false, onGround:true, facing:1,
+      life:3, hits:0, score:0, obstacles:[], targets:[],
+      bossPhase:false, bossHp:BOSS_MAX_HP, invincible:false,
+      arrows:[], fireballs:[], shocks:[], attackTurn:0,
+      lastShot:0, lastFire:0, won:false, over:false
     };
   }
 
-  // ===== 背景生成 =====
   function buildWorld(){
     world.innerHTML='';
-    world.style.width = STAGE_LEN + 'px';
-    // 雲
+    world.style.width=STAGE_LEN+'px';
     for(let i=0;i<18;i++){
-      const c=document.createElement('div');
-      c.className='cloud'; c.textContent='☁️';
-      c.style.left=(120+ i*260 + Math.random()*60)+'px';
-      c.style.top=(20+ (i%3)*46)+'px';
+      const c=document.createElement('div'); c.className='cloud'; c.textContent='☁️';
+      c.style.left=(120+i*260+Math.random()*60)+'px'; c.style.top=(20+(i%3)*46)+'px';
       world.appendChild(c);
     }
-    // ビル
     const colors=['#9fb6c9','#aebfcd','#94a7b8'];
     for(let i=0;i<28;i++){
-      const b=document.createElement('div');
-      b.className='building';
-      const h=120+ (i*53%170);
-      b.style.height=h+'px';
-      b.style.left=(160 + i*150)+'px';
+      const b=document.createElement('div'); b.className='building';
+      b.style.height=(120+(i*53%170))+'px'; b.style.left=(160+i*150)+'px';
       b.style.background=`linear-gradient(${colors[i%3]}, #7c93a6)`;
       world.appendChild(b);
     }
-    ground.style.width = STAGE_LEN + 'px';
+    ground.style.width=STAGE_LEN+'px';
 
-    const lastItemX = STAGE_LEN - W() - 200;   // ボスゾーン手前まで
-
-    // 障害物(ジャンプでよける / 当たるとライフ-1)
+    const lastItemX=STAGE_LEN - W() - 200;
     state.obstacles=[];
     const obsEmoji=['🌵','🪨','🚧'];
     let ox=600, oi=0;
-    while(ox < lastItemX){
-      const o=document.createElement('div');
-      o.className='obstacle';
-      o.textContent=obsEmoji[oi%obsEmoji.length];
-      o.style.left=ox+'px';
-      world.appendChild(o);
-      state.obstacles.push({el:o, x:ox, w:42, hit:false});
-      ox += 360 + (oi%3)*70;   // 間隔は広めで一定リズム
-      oi++;
+    while(ox<lastItemX){
+      const o=document.createElement('div'); o.className='obstacle';
+      o.textContent=obsEmoji[oi%obsEmoji.length]; o.style.left=ox+'px';
+      world.appendChild(o); state.obstacles.push({el:o,x:ox,w:42,hit:false});
+      ox+=360+(oi%3)*70; oi++;
     }
-
-    // 的(矢で当てるととくてんUP) — つねに前方に的があるよう等間隔で配置
     state.targets=[];
-    let tx=520, ti=0;
-    const tys=[95,130,110,150,120];
-    while(tx < lastItemX){
+    let tx=520, ti=0; const tys=[95,130,110,150,120];
+    while(tx<lastItemX){
       const y=tys[ti%tys.length];
-      const tt=document.createElement('div');
-      tt.className='target';
-      tt.textContent='🎯';
-      tt.style.left=tx+'px';
-      tt.style.bottom=y+'px';
-      world.appendChild(tt);
-      state.targets.push({el:tt, x:tx, y:y, hit:false});
-      tx += 240;   // せまめ＝ずっと打つ的が出てくる
-      ti++;
+      const tt=document.createElement('div'); tt.className='target'; tt.textContent='🎯';
+      tt.style.left=tx+'px'; tt.style.bottom=y+'px';
+      world.appendChild(tt); state.targets.push({el:tt,x:tx,y:y,hit:false});
+      tx+=240; ti++;
     }
-
-    // ゴール旗
     const flag=document.createElement('div');
     flag.style.cssText=`position:absolute;bottom:60px;left:${STAGE_LEN-W()/2}px;font-size:46px;`;
-    flag.textContent='🚩';
-    world.appendChild(flag);
+    flag.textContent='🚩'; world.appendChild(flag);
   }
 
-  // ===== 描画位置更新 =====
   function render(){
-    world.style.transform = `translateX(${-state.camX}px)`;
-    ground.style.transform = `translateX(${-state.camX}px)`;
-    // プレイヤー画面位置
-    const screenX = state.playerX - state.camX;
-    player.style.left = screenX + 'px';
-    player.style.bottom = (GROUND_Y + state.playerY) + 'px';
-    player.style.transform = `scaleX(${state.facing})`;
+    world.style.transform=`translateX(${-state.camX}px)`;
+    ground.style.transform=`translateX(${-state.camX}px)`;
+    player.style.left=(state.playerX-state.camX)+'px';
+    player.style.bottom=(GROUND_Y+state.playerY)+'px';
+    player.style.transform=`scaleX(${state.facing})`;
   }
-
-  // ===== HUD =====
   function updateHud(){
-    lifePanel.textContent = 'ライフ ' + '❤️'.repeat(state.life) + '🖤'.repeat(3-state.life);
-    scorePanel.textContent = '⭐とくてん ' + state.score;
+    lifePanel.textContent='ライフ '+'❤️'.repeat(state.life)+'🖤'.repeat(3-state.life);
+    scorePanel.textContent='⭐とくてん '+state.score;
     if(state.bossPhase){
       bossHpPanel.style.display='block';
-      bossStars.textContent = '★'.repeat(state.bossHp) + '☆'.repeat(BOSS_MAX_HP-state.bossHp);
+      bossStars.textContent='★'.repeat(state.bossHp)+'☆'.repeat(BOSS_MAX_HP-state.bossHp);
     }
   }
 
-  // ===== 矢を撃つ =====
   function shoot(){
     if(!state.running) return;
     const now=performance.now();
-    if(now - state.lastShot < 350) return;  // 連射制限ゆるめ
-    state.lastShot=now;
-    sfx.shoot();
-    const a=document.createElement('div');
-    a.className='arrow';
-    const startX = state.playerX + (state.facing>0?PLAYER_W:0);
-    const startY = GROUND_Y + state.playerY + 30;
-    a.style.left=(startX - state.camX)+'px';
-    a.style.bottom=startY+'px';
-    a.style.transform = state.facing<0 ? 'scaleX(-1)':'';
+    if(now-state.lastShot<350) return;
+    state.lastShot=now; sfx.shoot();
+    const a=document.createElement('div'); a.className='arrow';
+    const startX=state.playerX+(state.facing>0?PLAYER_W:0);
+    const startY=GROUND_Y+state.playerY+30;
+    a.style.left=(startX-state.camX)+'px'; a.style.bottom=startY+'px';
+    a.style.transform=state.facing<0?'scaleX(-1)':'';
     gameEl.appendChild(a);
-    state.arrows.push({el:a, x:startX, y:startY, dir:state.facing});
+    state.arrows.push({el:a,x:startX,y:startY,dir:state.facing});
   }
-
-  // ===== 火の玉 =====
   function spawnFireball(){
-    const fb=document.createElement('div');
-    fb.className='fireball';
-    const startX = bossLeftWorld() + 20;
-    const startY = GROUND_Y + 18 + (Math.random()*18); // 体の高さ→ジャンプでよけられる
-    fb.style.left=(startX - state.camX)+'px';
-    fb.style.bottom=startY+'px';
-    gameEl.appendChild(fb);
-    state.fireballs.push({el:fb, x:startX, y:startY});
-    sfx.attack();
+    const fb=document.createElement('div'); fb.className='fireball';
+    const startX=bossLeftWorld()+20;
+    const startY=GROUND_Y+18+(Math.random()*18);
+    fb.style.left=(startX-state.camX)+'px'; fb.style.bottom=startY+'px';
+    gameEl.appendChild(fb); state.fireballs.push({el:fb,x:startX,y:startY}); sfx.attack();
   }
-
   function spawnShockwave(){
-    const sw=document.createElement('div');
-    sw.className='shock';
-    sw.textContent='💥';
-    const startX = bossLeftWorld() + 10;
-    sw.style.left=(startX - state.camX)+'px';
-    gameEl.appendChild(sw);
-    state.shocks.push({el:sw, x:startX});
-    sfx.attack();
+    const sw=document.createElement('div'); sw.className='shock'; sw.textContent='💥';
+    const startX=bossLeftWorld()+10;
+    sw.style.left=(startX-state.camX)+'px';
+    gameEl.appendChild(sw); state.shocks.push({el:sw,x:startX}); sfx.attack();
   }
+  function bossLeftWorld(){ return state.camX+(W()-300-20); }
 
-  // ボスのワールドX(左端)
-  function bossLeftWorld(){
-    // ボスは画面右側に固定表示。ワールド座標 = camX + (W - bossWidth - 30)
-    return state.camX + (W() - 300 - 20);
-  }
-
-  // ===== エフェクト =====
   function spark(x,y){
     for(let i=0;i<5;i++){
-      const s=document.createElement('div');
-      s.className='spark';
-      s.textContent= ['✨','⭐','💫','🌟'][i%4];
-      s.style.left=(x + (Math.random()*60-30))+'px';
-      s.style.bottom=(y + (Math.random()*40-10))+'px';
-      gameEl.appendChild(s);
-      setTimeout(()=>s.remove(),700);
+      const s=document.createElement('div'); s.className='spark';
+      s.textContent=['✨','⭐','💫','🌟'][i%4];
+      s.style.left=(x+(Math.random()*60-30))+'px'; s.style.bottom=(y+(Math.random()*40-10))+'px';
+      gameEl.appendChild(s); setTimeout(()=>s.remove(),700);
     }
   }
   function hitText(x,y){
-    const t=document.createElement('div');
-    t.className='hittext';
-    t.textContent = ['ヒット！','やった！','ナイス！'][Math.floor(Math.random()*3)];
-    t.style.left=x+'px'; t.style.bottom=y+'px';
-    gameEl.appendChild(t);
-    setTimeout(()=>t.remove(),800);
+    const t=document.createElement('div'); t.className='hittext';
+    t.textContent=['ヒット！','やった！','ナイス！'][Math.floor(Math.random()*3)];
+    t.style.left=x+'px'; t.style.bottom=y+'px'; gameEl.appendChild(t); setTimeout(()=>t.remove(),800);
   }
-
   function plusText(x,y,msg){
-    const t=document.createElement('div');
-    t.className='hittext';
-    t.style.fontSize='28px';
-    t.style.color='#39d353';
-    t.style.webkitTextStroke='3px #0a7a2e';
-    t.textContent=msg;
-    t.style.left=x+'px'; t.style.bottom=y+'px';
-    gameEl.appendChild(t);
-    setTimeout(()=>t.remove(),800);
+    const t=document.createElement('div'); t.className='hittext';
+    t.style.fontSize='28px'; t.style.color='#39d353'; t.style.webkitTextStroke='3px #0a7a2e';
+    t.textContent=msg; t.style.left=x+'px'; t.style.bottom=y+'px';
+    gameEl.appendChild(t); setTimeout(()=>t.remove(),800);
+  }
+  function bigText(msg){
+    const t=document.createElement('div'); t.className='hittext'; t.style.fontSize='40px';
+    t.style.left=(W()/2-110)+'px'; t.style.bottom=(H()/2)+'px'; t.textContent=msg;
+    gameEl.appendChild(t); setTimeout(()=>t.remove(),800);
   }
 
-  // ===== ボス被弾 =====
-  function bossTakeHit(screenX,screenY){
-    state.bossHp--;
-    state.hits++;
-    state.score += 20;
+  function bossTakeHit(sx,sy){
+    state.bossHp--; state.hits++; state.score+=20;
     boss.classList.remove('hit'); void boss.offsetWidth; boss.classList.add('hit');
-    sfx.bossHit();
-    spark(screenX, screenY);
-    hitText(screenX-30, screenY+60);
-    updateHud();
-    if(state.bossHp<=0){ win(); }
+    sfx.bossHit(); spark(sx,sy); hitText(sx-30,sy+60); updateHud();
+    if(state.bossHp<=0) win();
   }
-
-  // ===== プレイヤー被弾 =====
   function playerHit(){
     if(state.invincible) return;
-    state.life--;
-    sfx.hurt();
-    updateHud();
-    state.invincible=true;
-    player.classList.add('invincible');
+    state.life--; sfx.hurt(); updateHud();
+    state.invincible=true; player.classList.add('invincible');
     setTimeout(()=>{ state.invincible=false; player.classList.remove('invincible'); },1000);
-    if(state.life<=0){ gameOver(); }
+    if(state.life<=0) gameOver();
   }
 
-  // ===== ボス登場 =====
+  let bossDecorDone=false;
   function startBossFight(){
-    state.bossPhase=true;
-    boss.style.display='block';
-    startBgm(BGM_BOSS);
-    // トゲと歯を生成
+    state.bossPhase=true; boss.style.display='block'; startBgm(BGM_BOSS);
     setupBossDecor();
     requestAnimationFrame(()=>{ boss.style.right='20px'; });
     bossHpPanel.style.display='block';
-    state.lastFire = performance.now() + 700; // 登場後すぐ攻撃しはじめる
-    updateHud();
-    bigText('ボスとうじょう！');
+    state.lastFire=performance.now()+700;
+    updateHud(); bigText('ボスとうじょう！');
   }
-  let bossDecorDone=false;
   function setupBossDecor(){
     if(bossDecorDone) return; bossDecorDone=true;
-    const torsoTop=180; // 背中のトゲを並べる
     const spikes=[[110,210],[135,232],[160,238],[185,225],[208,205]];
     spikes.forEach(([l,b])=>{
-      const sp=document.createElement('div');
-      sp.className='spike';
-      sp.style.left=l+'px'; sp.style.bottom=b+'px';
-      sp.style.transform='rotate(8deg)';
+      const sp=document.createElement('div'); sp.className='spike';
+      sp.style.left=l+'px'; sp.style.bottom=b+'px'; sp.style.transform='rotate(8deg)';
       boss.appendChild(sp);
     });
-    // 歯
     const mouth=boss.querySelector('.mouth');
-    for(let i=0;i<5;i++){
-      const t=document.createElement('div');
-      t.className='tooth';
-      t.style.left=(4+i*15)+'px';
-      mouth.appendChild(t);
-    }
+    for(let i=0;i<5;i++){ const t=document.createElement('div'); t.className='tooth'; t.style.left=(4+i*15)+'px'; mouth.appendChild(t); }
   }
 
-  function bigText(msg){
-    const t=document.createElement('div');
-    t.className='hittext';
-    t.style.fontSize='40px';
-    t.style.left=(W()/2-110)+'px';
-    t.style.bottom=(H()/2)+'px';
-    t.textContent=msg;
-    gameEl.appendChild(t);
-    setTimeout(()=>t.remove(),800);
-  }
-
-  // ===== ゲームループ =====
   let lastT=0;
   function loop(t){
-    if(!state.running){ return; }
-    const dt = Math.min(40, t-lastT)/16.67; // 正規化
-    lastT=t;
+    if(!state.running) return;
+    const dt=Math.min(40,t-lastT)/16.67; lastT=t;
 
-    // --- 移動(勝手に前へ進む) ---
+    // 自動で前進
     state.facing=1;
-    if(!state.bossPhase){
-      state.playerX += 3.0*dt;   // 自動で右へ
-    }
-    // ボス戦中は定位置(ボスに近づきすぎない)
-    const maxX = state.bossPhase ? state.camX + W()*0.42 : STAGE_LEN-40;
+    if(!state.bossPhase) state.playerX+=3.0*dt;
+    const maxX=state.bossPhase?state.camX+W()*0.42:STAGE_LEN-40;
     if(state.playerX>maxX) state.playerX=maxX;
 
-    // --- カメラ ---
+    // カメラ
     if(!state.bossPhase){
-      let targetCam = state.playerX - W()*0.28;
-      if(targetCam<0) targetCam=0;
-      if(targetCam>BOSS_TRIGGER) targetCam=BOSS_TRIGGER;
-      state.camX += (targetCam - state.camX)*0.2*dt;
-      // ボス突入判定
-      if(state.camX >= BOSS_TRIGGER-2){
-        state.camX = BOSS_TRIGGER;
-        startBossFight();
-      }
+      let target=state.playerX-W()*0.28;
+      if(target<0) target=0;
+      const trig=BOSS_TRIGGER();
+      if(target>trig) target=trig;
+      state.camX+=(target-state.camX)*0.2*dt;
+      if(state.camX>=trig-2){ state.camX=trig; startBossFight(); }
     }
 
-    // --- 障害物 当たり判定(ジャンプでよける) ---
+    // 障害物
     if(!state.bossPhase){
       const px=state.playerX, pw=PLAYER_W;
       for(const o of state.obstacles){
         if(o.hit) continue;
-        const overlapX = (o.x < px+pw-10) && (o.x+o.w > px+10);
+        const overlapX=(o.x<px+pw-10)&&(o.x+o.w>px+10);
         if(overlapX){
-          if(state.playerY < 42){          // 低い位置=ぶつかる
-            o.hit=true;
-            o.el.style.opacity='0.35';
-            playerHit();
-          } else if(o.x+o.w < px+10){
-            o.hit=true;                     // とびこえた
-          }
+          if(state.playerY<42){ o.hit=true; o.el.style.opacity='0.35'; playerHit(); }
+          else if(o.x+o.w<px+10){ o.hit=true; }
         }
       }
     }
 
-    // --- ジャンプ重力 ---
-    if(state.jumping || state.playerY>0){
-      state.vy -= 0.62*dt;
-      state.playerY += state.vy*dt*1.4;
+    // ジャンプ重力
+    if(state.jumping||state.playerY>0){
+      state.vy-=0.62*dt; state.playerY+=state.vy*dt*1.4;
       if(state.playerY<=0){ state.playerY=0; state.vy=0; state.jumping=false; state.onGround=true; }
     }
 
-    // --- 矢 ---
+    // 矢
     for(let i=state.arrows.length-1;i>=0;i--){
       const a=state.arrows[i];
-      a.x += 8*dt*a.dir;
-      a.el.style.left=(a.x - state.camX)+'px';
-      // 的命中(とくてんUP)
+      a.x+=8*dt*a.dir; a.el.style.left=(a.x-state.camX)+'px';
       let hitTarget=false;
       if(a.dir>0){
         for(const tg of state.targets){
           if(tg.hit) continue;
-          if(a.x > tg.x-26 && a.x < tg.x+50 && Math.abs(a.y - (tg.y+24)) < 50){
-            tg.hit=true;
-            tg.el.classList.add('pop');
-            state.score += 10;
-            sfx.target();
-            const sx=tg.x - state.camX, sy=tg.y;
-            spark(sx, sy);
-            plusText(sx, sy+40, '+10');
-            updateHud();
-            hitTarget=true;
-            break;
+          if(a.x>tg.x-26 && a.x<tg.x+50 && Math.abs(a.y-(tg.y+24))<50){
+            tg.hit=true; tg.el.classList.add('pop'); state.score+=10; sfx.target();
+            const sx=tg.x-state.camX, sy=tg.y; spark(sx,sy); plusText(sx,sy+40,'+10'); updateHud();
+            hitTarget=true; break;
           }
         }
       }
       if(hitTarget){ a.el.remove(); state.arrows.splice(i,1); continue; }
-      // ボス命中
       if(state.bossPhase && state.bossHp>0 && a.dir>0){
         const bl=bossLeftWorld();
-        if(a.x > bl-10 && a.x < bl+300){   // 当たり判定大きめ
-          const sx = a.x - state.camX;
-          bossTakeHit(sx, a.y);
-          a.el.remove(); state.arrows.splice(i,1); continue;
-        }
+        if(a.x>bl-10 && a.x<bl+300){ bossTakeHit(a.x-state.camX,a.y); a.el.remove(); state.arrows.splice(i,1); continue; }
       }
-      // 画面外
-      if(a.x - state.camX > W()+50 || a.x - state.camX < -50){
-        a.el.remove(); state.arrows.splice(i,1);
-      }
+      if(a.x-state.camX>W()+50 || a.x-state.camX<-50){ a.el.remove(); state.arrows.splice(i,1); }
     }
 
-    // --- ボスの攻撃(火の玉と衝撃波を交互に。HP残り少ないと怒る) ---
+    // ボス攻撃
     if(state.bossPhase && state.bossHp>0){
-      const enraged = state.bossHp <= 5;
-      const interval = enraged ? 850 : 1300;
-      if(t - state.lastFire > interval){
+      const enraged=state.bossHp<=5;
+      const interval=enraged?850:1300;
+      if(t-state.lastFire>interval){
         state.lastFire=t;
-        const turn = state.attackTurn % 4;
-        if(turn===0 || turn===2){ spawnFireball(); }
+        const turn=state.attackTurn%4;
+        if(turn===0||turn===2){ spawnFireball(); }
         else if(turn===1){ spawnShockwave(); bigText('ジャンプ！'); }
         else { spawnFireball(); if(enraged) setTimeout(()=>{ if(state.running&&state.bossHp>0) spawnFireball(); },380); }
         state.attackTurn++;
       }
     }
-    const fbSpeed = state.bossHp<=4 ? 3.4 : 2.8;
+
+    // 火の玉
+    const fbSpeed=state.bossHp<=5?3.4:2.8;
     for(let i=state.fireballs.length-1;i>=0;i--){
       const f=state.fireballs[i];
-      f.x -= fbSpeed*dt;
-      f.el.style.left=(f.x - state.camX)+'px';
-      // プレイヤー当たり判定
-      const px = state.playerX, pw=PLAYER_W;
-      const py = state.playerY;
-      const fy = f.y - GROUND_Y; // 火の玉の高さ(地面基準)
-      const hitX = f.x > px-30 && f.x < px+pw+10;
-      const hitY = Math.abs(fy - (py+20)) < 50;
-      if(hitX && hitY){
-        f.el.remove(); state.fireballs.splice(i,1);
-        playerHit();
-        continue;
-      }
-      if(f.x - state.camX < -60){ f.el.remove(); state.fireballs.splice(i,1); }
+      f.x-=fbSpeed*dt; f.el.style.left=(f.x-state.camX)+'px';
+      const px=state.playerX, pw=PLAYER_W, py=state.playerY, fy=f.y-GROUND_Y;
+      if(f.x>px-30 && f.x<px+pw+10 && Math.abs(fy-(py+20))<50){ f.el.remove(); state.fireballs.splice(i,1); playerHit(); continue; }
+      if(f.x-state.camX<-60){ f.el.remove(); state.fireballs.splice(i,1); }
     }
-
-    // --- 衝撃波(ジャンプでよける) ---
+    // 衝撃波
     for(let i=state.shocks.length-1;i>=0;i--){
       const s=state.shocks[i];
-      s.x -= (state.bossHp<=4 ? 3.2 : 2.6)*dt;
-      s.el.style.left=(s.x - state.camX)+'px';
+      s.x-=(state.bossHp<=5?3.2:2.6)*dt; s.el.style.left=(s.x-state.camX)+'px';
       const px=state.playerX, pw=PLAYER_W;
-      const overlapX = s.x < px+pw-6 && s.x+46 > px+6;
-      if(overlapX && state.playerY < 40){   // 地上にいると当たる→ジャンプでよける
-        s.el.remove(); state.shocks.splice(i,1);
-        playerHit();
-        continue;
-      }
-      if(s.x - state.camX < -60){ s.el.remove(); state.shocks.splice(i,1); }
+      if(s.x<px+pw-6 && s.x+46>px+6 && state.playerY<40){ s.el.remove(); state.shocks.splice(i,1); playerHit(); continue; }
+      if(s.x-state.camX<-60){ s.el.remove(); state.shocks.splice(i,1); }
     }
 
     render();
     requestAnimationFrame(loop);
   }
 
-  // ===== 勝敗 =====
   function win(){
-    state.running=false; state.won=true;
-    stopBgm(); sfx.win();
-    bigText('やった〜！');
+    state.running=false; state.won=true; stopBgm(); sfx.win(); bigText('やった〜！');
     setTimeout(()=>{
-      document.getElementById('clearHits').textContent = 'あてた数 '+state.hits+'　⭐とくてん '+state.score;
-      document.getElementById('clearLife').textContent = 'のこりライフ '+'❤️'.repeat(state.life)+'🖤'.repeat(3-state.life);
+      document.getElementById('clearHits').textContent='あてた数 '+state.hits+'　⭐とくてん '+state.score;
+      document.getElementById('clearLife').textContent='のこりライフ '+'❤️'.repeat(state.life)+'🖤'.repeat(3-state.life);
       document.getElementById('clearScreen').classList.add('show');
     },700);
   }
   function gameOver(){
-    state.running=false; state.over=true;
-    stopBgm(); sfx.over();
+    state.running=false; state.over=true; stopBgm(); sfx.over();
     setTimeout(()=>{
-      document.getElementById('overHits').textContent = 'あてた数 '+state.hits+'　⭐とくてん '+state.score;
+      document.getElementById('overHits').textContent='あてた数 '+state.hits+'　⭐とくてん '+state.score;
       document.getElementById('overScreen').classList.add('show');
     },400);
   }
-
-  // ===== ジャンプ操作 =====
   function jump(){
     if(!state.running) return;
-    if(!state.jumping && state.playerY<=0){
-      state.jumping=true; state.onGround=false;
-      state.vy=13.5;
-      sfx.jump();
-    }
+    if(!state.jumping && state.playerY<=0){ state.jumping=true; state.onGround=false; state.vy=13.5; sfx.jump(); }
   }
 
-  // ===== スタート/リセット =====
   function startGame(){
-    // クリーンアップ
     document.querySelectorAll('.arrow,.fireball,.shock,.spark,.hittext').forEach(e=>e.remove());
-    boss.style.display='none';
-    boss.style.right='-360px';
-    bossDecorDone=false;
-    boss.querySelectorAll('.spike,.tooth').forEach(e=>e.remove());
+    boss.style.display='none'; boss.style.right='-360px';
+    bossDecorDone=false; boss.querySelectorAll('.spike,.tooth').forEach(e=>e.remove());
     bossHpPanel.style.display='none';
-
-    resetState();
-    state.playerY=0;
-    applyCharacter();
-    buildWorld();
-    updateHud();
-    render();
-
+    resetState(); applyCharacter(); buildWorld(); updateHud(); render();
     document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));
-    initAudio();
-    startBgm(BGM_RUN);
-    state.running=true;
-    lastT=performance.now();
-    requestAnimationFrame(loop);
+    initAudio(); startBgm(BGM_RUN);
+    state.running=true; lastT=performance.now(); requestAnimationFrame(loop);
+  }
+  function returnToSelect(){
+    stopBgm();
+    document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));
+    buildCharGrid();
+    document.getElementById('startScreen').classList.add('show');
   }
 
-  // ===== 入力バインド =====
-  function bindHold(id, onDown, onUp){
+  function bindHold(id,onDown,onUp){
     const el=document.getElementById(id);
     const down=e=>{ e.preventDefault(); onDown(); };
     const up=e=>{ e.preventDefault(); if(onUp)onUp(); };
@@ -1149,32 +691,23 @@
     el.addEventListener('mouseup',up);
     el.addEventListener('mouseleave',up);
   }
-  bindHold('btnJump', ()=>jump());
+  bindHold('btnJump',()=>jump());
   bindHold('btnShoot',()=>shoot());
 
-  // キーボード(PC確認用): スペース/↑=ジャンプ, Enter/Z/X=矢
   document.addEventListener('keydown',e=>{
     if(e.repeat) return;
     if(e.key===' '||e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='ArrowRight') jump();
     if(e.key==='Enter'||e.key==='z'||e.key==='x') shoot();
   });
 
-  function returnToSelect(){
-    document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));
-    buildCharGrid();
-    document.getElementById('startScreen').classList.add('show');
-  }
-
-  document.getElementById('muteBtn').addEventListener('click',(e)=>{ e.stopPropagation(); initAudio(); toggleMute(); });
+  document.getElementById('muteBtn').addEventListener('click',e=>{ e.stopPropagation(); initAudio(); toggleMute(); });
   document.getElementById('startBtn').addEventListener('click',startGame);
   document.getElementById('clearReplay').addEventListener('click',returnToSelect);
   document.getElementById('overReplay').addEventListener('click',returnToSelect);
 
-  // 初期描画
   buildCharGrid();
-  resetState(); state.playerY=0; applyCharacter(); buildWorld(); updateHud(); render();
+  resetState(); applyCharacter(); buildWorld(); updateHud(); render();
   window.addEventListener('resize',()=>{ if(!state.running) render(); });
-
 })();
 </script>
 </body>
